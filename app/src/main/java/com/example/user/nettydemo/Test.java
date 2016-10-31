@@ -11,32 +11,42 @@ public final class Test {
   public interface ProtoTestOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional string title = 1;
+    // required int32 id = 1;
     /**
-     * <code>optional string title = 1;</code>
+     * <code>required int32 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required int32 id = 1;</code>
+     */
+    int getId();
+
+    // optional string title = 2;
+    /**
+     * <code>optional string title = 2;</code>
      */
     boolean hasTitle();
     /**
-     * <code>optional string title = 1;</code>
+     * <code>optional string title = 2;</code>
      */
     String getTitle();
     /**
-     * <code>optional string title = 1;</code>
+     * <code>optional string title = 2;</code>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
-    // optional string content = 2;
+    // optional string content = 3;
     /**
-     * <code>optional string content = 2;</code>
+     * <code>optional string content = 3;</code>
      */
     boolean hasContent();
     /**
-     * <code>optional string content = 2;</code>
+     * <code>optional string content = 3;</code>
      */
     String getContent();
     /**
-     * <code>optional string content = 2;</code>
+     * <code>optional string content = 3;</code>
      */
     com.google.protobuf.ByteString
         getContentBytes();
@@ -92,13 +102,18 @@ public final class Test {
               }
               break;
             }
-            case 10: {
+            case 8: {
               bitField0_ |= 0x00000001;
-              title_ = input.readBytes();
+              id_ = input.readInt32();
               break;
             }
             case 18: {
               bitField0_ |= 0x00000002;
+              title_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
               content_ = input.readBytes();
               break;
             }
@@ -142,17 +157,33 @@ public final class Test {
     }
 
     private int bitField0_;
-    // optional string title = 1;
-    public static final int TITLE_FIELD_NUMBER = 1;
-    private Object title_;
+    // required int32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
     /**
-     * <code>optional string title = 1;</code>
+     * <code>required int32 id = 1;</code>
      */
-    public boolean hasTitle() {
+    public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional string title = 1;</code>
+     * <code>required int32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // optional string title = 2;
+    public static final int TITLE_FIELD_NUMBER = 2;
+    private Object title_;
+    /**
+     * <code>optional string title = 2;</code>
+     */
+    public boolean hasTitle() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string title = 2;</code>
      */
     public String getTitle() {
       Object ref = title_;
@@ -169,7 +200,7 @@ public final class Test {
       }
     }
     /**
-     * <code>optional string title = 1;</code>
+     * <code>optional string title = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -185,17 +216,17 @@ public final class Test {
       }
     }
 
-    // optional string content = 2;
-    public static final int CONTENT_FIELD_NUMBER = 2;
+    // optional string content = 3;
+    public static final int CONTENT_FIELD_NUMBER = 3;
     private Object content_;
     /**
-     * <code>optional string content = 2;</code>
+     * <code>optional string content = 3;</code>
      */
     public boolean hasContent() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional string content = 2;</code>
+     * <code>optional string content = 3;</code>
      */
     public String getContent() {
       Object ref = content_;
@@ -212,7 +243,7 @@ public final class Test {
       }
     }
     /**
-     * <code>optional string content = 2;</code>
+     * <code>optional string content = 3;</code>
      */
     public com.google.protobuf.ByteString
         getContentBytes() {
@@ -229,6 +260,7 @@ public final class Test {
     }
 
     private void initFields() {
+      id_ = 0;
       title_ = "";
       content_ = "";
     }
@@ -237,6 +269,10 @@ public final class Test {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -245,10 +281,13 @@ public final class Test {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getTitleBytes());
+        output.writeInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getContentBytes());
+        output.writeBytes(2, getTitleBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getContentBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -261,11 +300,15 @@ public final class Test {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getTitleBytes());
+          .computeInt32Size(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getContentBytes());
+          .computeBytesSize(2, getTitleBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getContentBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -383,10 +426,12 @@ public final class Test {
 
       public Builder clear() {
         super.clear();
-        title_ = "";
+        id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        content_ = "";
+        title_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        content_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -418,9 +463,13 @@ public final class Test {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.title_ = title_;
+        result.id_ = id_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
+        }
+        result.title_ = title_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.content_ = content_;
         result.bitField0_ = to_bitField0_;
@@ -439,13 +488,16 @@ public final class Test {
 
       public Builder mergeFrom(ProtoTest other) {
         if (other == ProtoTest.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
         if (other.hasTitle()) {
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000002;
           title_ = other.title_;
           onChanged();
         }
         if (other.hasContent()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
           content_ = other.content_;
           onChanged();
         }
@@ -454,6 +506,10 @@ public final class Test {
       }
 
       public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -476,16 +532,49 @@ public final class Test {
       }
       private int bitField0_;
 
-      // optional string title = 1;
-      private Object title_ = "";
+      // required int32 id = 1;
+      private int id_ ;
       /**
-       * <code>optional string title = 1;</code>
+       * <code>required int32 id = 1;</code>
        */
-      public boolean hasTitle() {
+      public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>required int32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string title = 2;
+      private Object title_ = "";
+      /**
+       * <code>optional string title = 2;</code>
+       */
+      public boolean hasTitle() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string title = 2;</code>
        */
       public String getTitle() {
         Object ref = title_;
@@ -499,7 +588,7 @@ public final class Test {
         }
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string title = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -515,51 +604,51 @@ public final class Test {
         }
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string title = 2;</code>
        */
       public Builder setTitle(
           String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000002;
         title_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string title = 2;</code>
        */
       public Builder clearTitle() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         title_ = getDefaultInstance().getTitle();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string title = 1;</code>
+       * <code>optional string title = 2;</code>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000002;
         title_ = value;
         onChanged();
         return this;
       }
 
-      // optional string content = 2;
+      // optional string content = 3;
       private Object content_ = "";
       /**
-       * <code>optional string content = 2;</code>
+       * <code>optional string content = 3;</code>
        */
       public boolean hasContent() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional string content = 2;</code>
+       * <code>optional string content = 3;</code>
        */
       public String getContent() {
         Object ref = content_;
@@ -573,7 +662,7 @@ public final class Test {
         }
       }
       /**
-       * <code>optional string content = 2;</code>
+       * <code>optional string content = 3;</code>
        */
       public com.google.protobuf.ByteString
           getContentBytes() {
@@ -589,36 +678,36 @@ public final class Test {
         }
       }
       /**
-       * <code>optional string content = 2;</code>
+       * <code>optional string content = 3;</code>
        */
       public Builder setContent(
           String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         content_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string content = 2;</code>
+       * <code>optional string content = 3;</code>
        */
       public Builder clearContent() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         content_ = getDefaultInstance().getContent();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string content = 2;</code>
+       * <code>optional string content = 3;</code>
        */
       public Builder setContentBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         content_ = value;
         onChanged();
         return this;
@@ -650,8 +739,8 @@ public final class Test {
   static {
     String[] descriptorData = {
       "\n\nTest.proto\022\032com.example.user.nettydemo" +
-      "\"+\n\tProtoTest\022\r\n\005title\030\001 \001(\t\022\017\n\007content\030" +
-      "\002 \001(\t"
+      "\"7\n\tProtoTest\022\n\n\002id\030\001 \002(\005\022\r\n\005title\030\002 \001(\t" +
+      "\022\017\n\007content\030\003 \001(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -663,7 +752,7 @@ public final class Test {
           internal_static_com_example_user_nettydemo_ProtoTest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_example_user_nettydemo_ProtoTest_descriptor,
-              new String[] { "Title", "Content", });
+              new String[] { "Id", "Title", "Content", });
           return null;
         }
       };

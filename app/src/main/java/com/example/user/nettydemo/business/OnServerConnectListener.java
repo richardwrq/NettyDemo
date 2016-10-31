@@ -1,4 +1,4 @@
-package com.example.user.nettydemo.service;
+package com.example.user.nettydemo.business;
 
 /**
  * Created by user on 2016/10/26.
